@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "9a3c3db4-59fb-44e6-af0e-82e3303bc44a",
+		"name": "TechTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Employee",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "828a9e49cf6c45c7923bab4567592225",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "key",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Daniel Alfonso\",\r\n    \"lastName\": \"Vargas Ortiz\",\r\n    \"documentType\": \"CC\",\r\n    \"documentNumber\": \"1016099017\",\r\n    \"birthDate\": null,\r\n    \"jobStartDate\": null,\r\n    \"cargo\": \"\",\r\n    \"salary\" : 4.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:10000/api",
+					"host": [
+						"localhost"
+					],
+					"port": "10000",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SOAP WS - Create Employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n                  xmlns:gs=\"http://localhost:10002/employees\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <gs:createEmployeeRequest>\r\n            <gs:request>\r\n                <gs:firstName>Daniel</gs:firstName>\r\n                <gs:lastName>Vargas</gs:lastName>\r\n                <gs:documentType>CC</gs:documentType>\r\n                <gs:documentNumber>1016099017</gs:documentNumber>\r\n                <gs:birthDate>1997-12-27</gs:birthDate>\r\n                <gs:jobStartDate>2021-03-01</gs:jobStartDate>\r\n                <gs:cargo>Dev</gs:cargo>\r\n                <gs:salary>100.0</gs:salary>\r\n            </gs:request>\r\n        </gs:createEmployeeRequest>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:10002/ws",
+					"host": [
+						"localhost"
+					],
+					"port": "10002",
+					"path": [
+						"ws"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
